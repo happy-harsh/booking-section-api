@@ -1,0 +1,26 @@
+import { NextRequest, NextResponse } from "next/server";
+import User from "@/app/models/User";
+import { dbConnect } from "@/app/lib/mongoose";
+
+
+
+export async function POST(req) {
+    await dbConnect();
+    const userId = req.headers.get("x-user-id");
+
+
+    if (!userId) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+
+    const { name, age, passport } = await req.json();
+    if (!name || !age || !passport) {
+        return NextResponse.json({ message: "All fields are required" }, { status: 400 });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
+
+    user.travellers.push({ name, age, passport });
+    await user.save();
+
+    return NextResponse.json({ message: "Traveller added", travellers: user.travellers });
+}

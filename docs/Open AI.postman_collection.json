@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "44941b4d-e91e-4c62-a112-7de7850605ae",
+		"name": "Open AI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28576808"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2ODVhZTJiMjIxMzU2N2MyY2VmNDcwYmMiLCJlbWFpbCI6Imt1bmFsQGludGVybm92by5pbiIsImlhdCI6MTc1MDc5MTM4NCwiZXhwIjoxNzUwNzkyMjg0fQ.0lPCNiCAMartPN12xDk9zbINBEzk9-y_BarxTUqaYlE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/bookings/685aea7d213567c2cef470e8/summary",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"bookings",
+						"685aea7d213567c2cef470e8",
+						"summary"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

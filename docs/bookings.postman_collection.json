@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "018692ba-be57-46a6-8067-e054cf505faf",
+		"name": "bookings",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28576808"
+	},
+	"item": [
+		{
+			"name": "booking status check",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2ODVhZTJiMjIxMzU2N2MyY2VmNDcwYmMiLCJlbWFpbCI6Imt1bmFsQGludGVybm92by5pbiIsImlhdCI6MTc1MDc4OTU2NSwiZXhwIjoxNzUwNzkwNDY1fQ.oxsqhOPxYSsn1p_xe41j7VOyw5vnEqSsEj-4A0q1muY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/bookings?status=completed",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"bookings"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "completed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create booking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2ODVhZTJiMjIxMzU2N2MyY2VmNDcwYmMiLCJlbWFpbCI6Imt1bmFsQGludGVybm92by5pbiIsImlhdCI6MTc1MDc4Nzg0MSwiZXhwIjoxNzUwNzg4NzQxfQ.8GS70G7cRUlIpHvd4T3mnYWJ5dfi2QFpyqC4MoppWVk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"origin\": \"delhi\",\r\n  \"destination\": \"nyc\",\r\n  \"last_travel_date\": \"2025-06-10\",\r\n  \"flights\": true,\r\n  \"hotel\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/bookings",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
