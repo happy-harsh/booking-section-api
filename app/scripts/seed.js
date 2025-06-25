@@ -1,10 +1,33 @@
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import Order from '../models/Order.js';
+import User from '../models/User.js';
 
-import { dbConnect } from "../lib/mongoose.js";
-import Order from "../models/Order.js";
-import User from "../models/User.js";
+dotenv.config({ path: '../../.env.local' });
+
+const MONGODB_URI = process.env.MONGODB_URI;
+
+const DB_NAME = process.env.DB_NAME;
+
+if (!MONGODB_URI) {
+  throw new Error("❌ MONGODB_URI not found in .env file");
+}
+
+async function dbConnect() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      dbName: DB_NAME,
+    });
+    console.log("✅ Connected to MongoDB");
+  } catch (error) {
+    console.error("❌ MongoDB connection failed", error);
+    process.exit(1);
+  }
+}
 
 async function seed() {
   await dbConnect();
+
   await User.deleteMany({});
   await Order.deleteMany({});
 
