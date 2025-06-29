@@ -15,11 +15,9 @@ const OrderSchema = new Schema(
     last_travel_date: { type: Date, required: true },
     flights: { type: Boolean, default: false },
     hotel: { type: Boolean, default: false },
+    travellers: [{ type: Schema.Types.ObjectId, ref: 'Traveller' }] 
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
-
 const Order = models.Order || model('Order', OrderSchema);
 export default Order;

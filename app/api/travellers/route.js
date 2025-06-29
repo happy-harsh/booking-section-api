@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import User from "@/app/models/User";
 import { dbConnect } from "@/app/lib/mongoose";
+import Traveller from "@/app/models/Traveller";
+import User from "@/app/models/User";
 
 
 
@@ -19,8 +20,9 @@ export async function POST(req) {
     const user = await User.findById(userId);
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
 
-    user.travellers.push({ name, age, passport });
-    await user.save();
+    const newTraveller = new Traveller({ userId: userId, name, age, passport });
+    await newTraveller.save();
+
 
     return NextResponse.json({ message: "Traveller added", travellers: user.travellers });
 }

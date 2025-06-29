@@ -4,7 +4,7 @@ const encoder = new TextEncoder();
 const ACCESS_SECRET = encoder.encode(process.env.JWT_ACCESS_SECRET);
 const REFRESH_SECRET = encoder.encode(process.env.JWT_REFRESH_SECRET);
 
-export async function signAccessToken(payload, expiresIn = '15m') {
+export async function signAccessToken(payload, expiresIn = '3d') {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
